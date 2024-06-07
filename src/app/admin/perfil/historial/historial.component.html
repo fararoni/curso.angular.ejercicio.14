@@ -1,0 +1,62 @@
+
+<div [hidden]="formSubmited">
+<section  class="form-container">
+    <form (ngSubmit)="onSubmit()"  #estudios="ngForm">
+    <button type="button" class="btn btn-default"
+    (click)="nuevoEstudio(); estudios.reset()">Agregar otro estudio</button>
+
+    <button type="submit" class="btn btn-success"
+        [disabled]="!estudios.form.valid">Enviar</button>
+
+    <div class="form-group">
+        <label for="escuela">Escuela: </label>
+        <input 
+            #escuela="ngModel"
+            id="escuela" 
+            type="text"
+            class="form-control ng-untouched ng-pristine ng-valid"
+            required required minlength="2"  appForbiddenName="patito"
+            [(ngModel)]="modelo.escuela" name="escuela"> {{ modelo.escuela}} 
+            <div [hidden]="escuela.valid || escuela.pristine"
+                class="alert alert-danger">
+                El nombre de la escuela es obliogatorio
+            </div>
+            <div *ngIf="escuela.invalid && (escuela.dirty || escuela.touched)"
+              class="alert">
+                <div *ngIf="escuela.hasError('required')">
+                    Escuela es obligatorio
+                </div>
+                <div *ngIf="escuela.hasError('minlength')">
+                    El nombre de la escuela debe tener por lo menos tres caracteres
+                </div>
+            </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="nivel">Nivel académico</label>
+        <select class="form-control" id="nivel"   [(ngModel)]="modelo.nivel" required>
+            <option *ngFor="let nivel of niveles" [value]="nivel">{{ nivel }}</option>
+        </select>
+        {{ modelo.nivel }}
+    </div>
+
+    <div class="form-group">
+        <label for="grado">Grado académico</label>
+        <select class="form-control" id="grado" required>
+            <option *ngFor="let grado of grados" [value]="grado">{{ grado }}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="ciudad">Ciudad: </label>
+        <input 
+            id="ciudad" 
+            type="text"
+            class="form-control"
+            required
+            [(ngModel)]="modelo.ciudad" name="ciudad"> {{ modelo.ciudad}}
+            
+    </div>
+</form>
+</section>
+</div>

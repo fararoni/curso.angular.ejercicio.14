@@ -1,0 +1,26 @@
+ <section class="listing" *ngIf="fichaPersona.enlicencia ===false">
+      <img
+        class="listing-photo"
+        src="{{baseUrl + '/' + fichaPersona.url_photo}}"
+        alt="Fotografía {{ fichaPersona.nombre }}"
+        
+      />
+      <h2 [ngClass] ="fichaPersona.enlicencia ? 'listing-enlicencia' : '' "
+          class="listing-heading">
+          <a [routerLink]="['/fichas/', fichaPersona.id]">
+            {{ fichaPersona.nombre | uppercase  }}
+          </a>
+        <h3 *ngIf="fichaPersona.reelecta===false"> Persona reelecta</h3>
+      </h2>
+      
+      <div [ngSwitch]="fichaPersona.ciudad">
+        <div *ngSwitchCase="'Veracruz'"><img class="listing-escudo" src="https://w7.pngwing.com/pngs/78/827/png-transparent-tiburones-rojos-de-veracruz-encapsulated-postscript-logo-escudo-cdr-logo-escutcheon.png"></div>
+        <div *ngSwitchCase="'México'"><img class="listing-escudo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Coat_of_arms_of_Mexico_State.svg/400px-Coat_of_arms_of_Mexico_State.svg.png"></div>
+        <div *ngSwitchDefault ><img class="listing-escudo" src="https://www.shutterstock.com/image-vector/mexico-map-black-icon-concept-260nw-1922283644.jpg"></div>
+      </div>
+      <p class="listing-location">{{ fichaPersona.ciudad }}, distrito: {{ fichaPersona.distrito }} </p>
+      <h3 [ngClass] ="listaClasses" class="listing-status">{{ fichaPersona.reelecta }}</h3>
+
+      <button (click)="toggleDeAcuerdo()"
+          [ngStyle] ="getStylesDeAcuerdo()">De acuerdo</button>
+</section>

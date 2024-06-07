@@ -1,0 +1,42 @@
+<header>
+	<nav>
+        <a [routerLink]="['/']">
+		    Inicio
+        </a>
+		<a  href="#">Panel</a>
+		<a  href="#">Configuración</a>
+	</nav>
+	<div  class="icons">
+		<i  class="fas fa-bell"></i>
+		<i  class="fas fa-user-circle"></i>
+	</div>
+</header>
+<div class="main-container">
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a routerLink="/">Inicio</a></li>
+                <li><a routerLink="/admin">Dashboard</a></li>
+                <li><a routerLink="/auth/login">Usuarios</a></li>
+                <li><a href="#">Ajustes</a></li>
+                <li><a href="#">Reportes</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="content">
+        <section>
+            <h1>Fichas curriculares | {{ fechaHoy | date:'yyyy/mm/dd' }}</h1>
+            <H2 appResaltado>Personal de la Institución</H2>
+            
+            <!-- Llamada al componente de fichas curriculares-->
+            <router-outlet></router-outlet>
+
+        </section>
+    </main>
+</div>
+<footer>
+    <p>&copy; 2024 Admin Panel. Todos los derechos reservados.</p>
+</footer>
+
+

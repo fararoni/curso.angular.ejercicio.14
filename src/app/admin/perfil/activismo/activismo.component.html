@@ -1,0 +1,8 @@
+<div>
+    <h1>Activismo</h1>
+    <ul>
+      <li *ngFor="let item of items">{{ item }}</li>
+    </ul>
+    <input #newItem>
+    <button (click)="addItem(newItem.value); newItem.value=''">Agregar activismo</button>
+  </div>
